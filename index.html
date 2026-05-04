@@ -10,33 +10,38 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      font-family: 'Segoe UI', sans-serif;
+      background: black;
+      font-family: Arial;
       overflow: hidden;
     }
 
     h1 {
-      color: white;
-      font-size: 45px;
+      font-size: 50px;
+      color: #fff;
       text-align: center;
-      animation: glow 2s ease-in-out infinite alternate;
+      animation: glow 1.5s infinite alternate;
     }
 
     @keyframes glow {
-      from {
-        text-shadow: 0 0 10px white, 0 0 20px #ff4d6d;
+      0% {
+        text-shadow: 0 0 5px #fff,
+                     0 0 10px #ff4d6d,
+                     0 0 20px #ff4d6d,
+                     0 0 40px #ff1a4d;
       }
-      to {
-        text-shadow: 0 0 20px white, 0 0 40px #ff1a4d;
+      100% {
+        text-shadow: 0 0 10px #fff,
+                     0 0 20px #ff4d6d,
+                     0 0 40px #ff1a4d,
+                     0 0 80px #ff1a4d;
       }
     }
 
     .heart {
       position: absolute;
       bottom: -20px;
-      color: red;
       font-size: 20px;
-      animation: floatUp 6s linear infinite;
+      animation: floatUp 5s linear infinite;
     }
 
     @keyframes floatUp {
@@ -59,20 +64,17 @@
 <script>
   function createHeart() {
     const heart = document.createElement("div");
-    heart.classList.add("heart");
+    heart.className = "heart";
     heart.innerHTML = "❤️";
 
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (15 + Math.random() * 25) + "px";
 
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-      heart.remove();
-    }, 6000);
+    setTimeout(() => heart.remove(), 5000);
   }
 
-  setInterval(createHeart, 250);
+  setInterval(createHeart, 200);
 </script>
 
 </body>
